@@ -1,0 +1,24 @@
+{
+    "name": "maccbrainy/seedwps",
+    "description": "Maccbrainy Wordpress Starter Theme for Developers",
+    "keywords": ["WordPress","Theme","Starter"],
+    "homepage": "https://github.com/Maccbrainy/seedwps",
+    "require-dev": {
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "wp-coding-standards/wpcs": "^2.2",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.6.2"
+    },
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Iketaku Michael Christopher",
+            "email": "iketakumichaelnedum@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": { "seedwps\\": "./inc" },
+        "files": ["./inc/Helpers.php"]
+    }
+}
