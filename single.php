@@ -37,3 +37,4 @@ get_header(); ?>
 		<div><?php get_sidebar();?></div>
 	</div><!-- .flex -->
 </div><!-- .container -->
+<?php get_footer();
