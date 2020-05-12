@@ -41,7 +41,8 @@
 					<div class="site-branding">
 						<h1 class="site-title">
 								<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-									<?php bloginfo( 'name' ); ?>
+									<?php svg('wordpress');?>
+									<span><?php bloginfo( 'name' ); ?></span>
 								</a>
 							</h1>
 							<?php
