@@ -7,8 +7,10 @@
 
 namespace seedwps\Api;
 
-use seedwps\Api\Customizer\Sitelogo;
 use seedwps\Api\Customizer\Header;
+use seedwps\Api\Customizer\Footer;
+use seedwps\Api\Customizer\Sitelogo;
+
 
 class Customizer
 {
@@ -30,7 +32,8 @@ class Customizer
 	{
 		return [
 			Sitelogo::class,
-			Header::class
+			Header::class,
+			Footer::class
 		];
 	}
 
