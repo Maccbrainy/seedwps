@@ -22,7 +22,8 @@ final class Init
 			Setup\Menus::class,
 			Setup\Setups::class,
 			Setup\Enqueue::class,
-			Core\Sidebar::class
+			Core\Sidebar::class,
+			Api\Customizer::class
 		];
 	}
 
