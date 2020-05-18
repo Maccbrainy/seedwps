@@ -1,0 +1,63 @@
+/**========================
+ * Grid
+ * ========================
+ */
+$columns: 12;
+$gutter: 10px;
+$spacing: 20;
+
+/**========================
+ * Spacing
+ * ========================
+ */
+$paddings:('pt':'padding-top','pr':'padding-right','pb':'padding-bottom','pl':'padding-left');
+$margins:('mt':'margin-top','mr':'margin-right','mb':'margin-bottom','ml':'margin-left');
+
+/**========================
+ * Media Queries
+ * ========================
+ */
+$xs: 480px;
+$sm: 600px;
+$md: 800px;
+$lg: 1190px;
+$xl: 1440px;
+$xxl: 1700px;
+
+$breakpoints:('xs':$xs,'sm': $sm,'md': $md,'lg':$lg,'xl': $xl, 'xxl': $xxl);
+
+
+/**========================
+ * Colours
+ * ========================
+ */
+$white: #fff;
+$black: #000;
+$light-grey: #f0f0f0;
+$navy-blue: #0e0c38;
+
+//Custom colours
+
+$colours:('white': $white, 'black': $black,'navy-blue': $navy-blue, 'light-grey': $light-grey);
+
+/**========================
+ * Typograhy
+ * ========================
+ */
+
+$base-font: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$base-fs: 18px;
+
+/**========================
+ * Animations
+ * ========================
+ */
+
+$time: 320ms;
+$time_slow: 700ms;
+
+$swing: cubic-beizier(0.55, 0, 0.1,1);
+$swift: cubic-beizier(0.55, 0, 0.1,1);
+$ease: ease;
+
+$transition-default: all $time $ease;
