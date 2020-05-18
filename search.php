@@ -9,51 +9,52 @@
 
 get_header(); ?>
 
-<div class="container mx-auto">
+<div class="container">
 
-	<div class="flex flex-wrap">
+	<div class="row">
+		<div class="col-sm-8">
+			<div id="primary" class="content-area">
 
-		<div id="primary" class="content-area">
+				<main id="main" class="site-main" role="main">
+					<?php
+						if( have_posts () ) :
 
-			<main id="main" class="site-main" role="main">
-				<?php
-					if( have_posts () ) :
+					?>
+							<header>
+								<h1 class="page-title">
+									<?php 
+										printf(/*translators: %s: Search Term.*/
+											esc_html__('Search Results for: %s','seedwps'),'<span>'.get_search_query(). '<span/>'
+										);
+									?>
+								</h1>
+							</header> <!-- Header-page -->
+					<?php
 
-				?>
-						<header>
-							<h1 class="page-title">
-								<?php 
-									printf(/*translators: %s: Search Term.*/
-										esc_html__('Search Results for: %s','seedwps'),'<span>'.get_search_query(). '<span/>'
-									);
-								?>
-							</h1>
-						</header> <!-- Header-page -->
-				<?php
+							/*Start the Loop*/
 
-						/*Start the Loop*/
+							while (have_posts()) :
+								the_post();
 
-						while (have_posts()) :
-							the_post();
+								get_template_part('views/content','search');
+							endwhile;
 
-							get_template_part('views/content','search');
-						endwhile;
+							the_posts_navigation();
 
-						the_posts_navigation();
+						else:
 
-					else:
+							get_template_part('views/content','none');
 
-						get_template_part('views/content','none');
+						endif;
 
-					endif;
-
-				?>
-			</main><!-- #main -->
-		</div><!-- .content-area -->
-		<div id="sidebar">
+					?>
+				</main><!-- #main -->
+			</div><!-- .content-area -->
+		</div><!-- .col-sm-8 -->
+		<div id="sidebar" class="col-sm-4">
 			<?php get_sidebar(); ?>
 		</div><!-- #sidebar -->
-	</div><!-- .flex -->
+	</div><!-- .row -->
 </div><!-- .container -->
 
 <?php get_footer();?>
