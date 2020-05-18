@@ -23,7 +23,7 @@
 				<!-- <span class="seperator"> | </span> -->
 
 				<?php
-					printf(esc_html__('Theme: %1$s by %2$s.', 'seedwps'), 'SEEDWPS','<a href="http://maccbrainy.com" rel="designer">Maccbrainy<a>');
+					printf(esc_html__('Theme: %1$s by %2$s.', 'seedwps'), 'SEEDWPS','<a href="http://maccbrainy.com" rel="designer">Maccbrainy</a>');
 				?>
 			</div> <!-- .site-info -->
 		</footer> <!-- #colophon -->
