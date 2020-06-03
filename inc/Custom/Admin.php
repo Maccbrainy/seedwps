@@ -7,6 +7,7 @@ namespace seedwps\Custom;
 
 use seedwps\Api\Admin_Settings;
 use seedwps\Api\Callbacks\Admin_Callbacks;
+use seedwps\Api\Callbacks\Admin_Manager_Callbacks;
 
 class Admin 
 {
@@ -20,6 +21,11 @@ class Admin
 	 * @var Class instance
 	 */
 	public $admin_callbacks;
+	/**
+	 * Admin Manager Callbacks class
+	 * @var Class instance
+	 */
+	public $admin_manager_callbacks;
 
 	/**
 	 * Pages array
@@ -39,6 +45,8 @@ class Admin
 
 		$this->admin_callbacks = new Admin_Callbacks();
 
+		$this->admin_manager_callbacks = new Admin_Manager_Callbacks();
+
 		$this->activateRegisterSettings();
 
 		$this->activateSettingsSection();
@@ -47,7 +55,10 @@ class Admin
 
 
 		/*=========Admin Page==========*/
-
+		/**
+		 * Admin Pages array
+		 * @var array
+		 */
 		$this->pages = array(
 			array(
 				'page_title' => 'Seedwps Custom Options',
@@ -60,7 +71,10 @@ class Admin
 			)
 		);
 		/*=========Admin SubPage==========*/
-
+		/**
+		 * Admin subpages array
+		 * @var array
+		 */
 		$this->subpages = array(
 			//Custom Post Type subpage
 			array(
@@ -68,16 +82,16 @@ class Admin
 				'page_title'	=> 'Custom Post Type' ,
 				'menu_title'	=> 'CPT',
 				'capability' 	=> 'manage_options',
-				'menu_slug'		=> 'cpt_manager',
+				'menu_slug'		=> 'CPT_manager',
 				'callback'		=>  array($this->admin_callbacks,'cpt_Index')
 			),
-			//custom css
+			//custom css subpage
 			array(
 				'parent_slug'	=> 'seedwps_theme',
 				'page_title'	=> 'Seedwps Custom Css' ,
 				'menu_title'	=> 'Custom Css',
 				'capability' 	=> 'manage_options',
-				'menu_slug'		=> 'css_manager',
+				'menu_slug'		=> 'CSS_manager',
 				'callback'		=>  array($this->admin_callbacks,'css_Index')
 			)
 		);
@@ -104,26 +118,33 @@ class Admin
 				'sanitize_callback' =>'' 
 			),
 
-			//Managers Settings
+			
+			/**Managers Settings Array
+
+			 * Profile manager Settings array
+			 */
 			array(
 				'option_group' 	=> 'seedwps_theme_settings' ,
 				'option_name' 	=> 'profile_manager',
-				'sanitize_callback' => array($this->admin_callbacks,'checkboxSanitize') 
+				'sanitize_callback' => array($this->admin_manager_callbacks,'checkboxSanitize') 
 			),
+			/*CPT manager Settings array*/
 			array(
 				'option_group' 	=> 'seedwps_theme_settings' ,
-				'option_name' 	=> 'theme_cpt_manager',
-				'sanitize_callback' => array($this->admin_callbacks,'checkboxSanitize') 
+				'option_name' 	=> 'cpt_manager',
+				'sanitize_callback' => array($this->admin_manager_callbacks,'checkboxSanitize') 
 			),
+			/*CSS manager Settings array*/
 			array(
 				'option_group' 	=> 'seedwps_theme_settings' ,
-				'option_name' 	=> 'theme_css_manager',
-				'sanitize_callback' => array($this->admin_callbacks,'checkboxSanitize') 
+				'option_name' 	=> 'css_manager',
+				'sanitize_callback' => array($this->admin_manager_callbacks,'checkboxSanitize') 
 			),
+			/*Login manager Settings array*/
 			array(
 				'option_group' 	=> 'seedwps_theme_settings' ,
 				'option_name' 	=> 'login_manager',
-				'sanitize_callback' => array($this->admin_callbacks,'checkboxSanitize') 
+				'sanitize_callback' => array($this->admin_manager_callbacks,'checkboxSanitize') 
 			)
 		);
 
@@ -138,18 +159,18 @@ class Admin
 	{
 		$args = array(
 
-			//Theme Support Options
+			//Theme Support Options Array
 			array(
 				'id'	=> 'theme-options',
 				'title'	=>'Theme Options',
 				'callback'	=> array($this->admin_callbacks,'theme_Options_Index'),
 				'page'		=>'seedwps_theme'
 			),
-			//Manager Sections
+			//Manager Sections Array
 			array(
 				'id'	=> 'seedwps_managers_index',
 				'title'	=>'Settings Manager',
-				'callback'	=> array($this->admin_callbacks,'adminSectionManager'),
+				'callback'	=> array($this->admin_manager_callbacks,'adminSectionManager'),
 				'page'		=>'seedwps_theme'
 			)
 		);
@@ -166,7 +187,7 @@ class Admin
 	{
 		$args = array(
 
-			//Theme Support Options
+			//Theme Support Options Array
 			array(
 				'id'	=> 'post-formats',
 				'title'	=>'Post Formats',
@@ -175,15 +196,61 @@ class Admin
 				'section'	=>'theme-options',
 				'args'		=>''
 			),
-			//Managers fields
+
+			/*============Managers fields================*/
+			/**
+			 * Profile Manager Array
+			 */
 			array(
 				'id'	=> 'profile_manager',
 				'title'	=>'Activate Profile Manager',
-				'callback'	=> array($this->admin_callbacks,'checkboxField'),
+				'callback'	=> array($this->admin_manager_callbacks,'checkboxField'),
 				'page'		=>'seedwps_theme',
 				'section'	=>'seedwps_managers_index',
 				'args'		=> array(
 					'label_for' => 'profile_manager',
+					'class'		=> 'ui-toggle'
+				)
+			),
+			/**
+			 * CPT Manager Array
+			 */
+			array(
+				'id'	=> 'cpt_manager',
+				'title'	=>'Activate CPT Manager',
+				'callback'	=> array($this->admin_manager_callbacks,'checkboxField'),
+				'page'		=>'seedwps_theme',
+				'section'	=>'seedwps_managers_index',
+				'args'		=> array(
+					'label_for' => 'cpt_manager',
+					'class'		=> 'ui-toggle'
+				)
+			),
+			/**
+			 * Custom Css Manager Array
+			 */
+			array(
+				'id'	=> 'css_manager',
+				'title'	=>'Activate Custom CSS Manager',
+				'callback'	=> array($this->admin_manager_callbacks,'checkboxField'),
+				'page'		=>'seedwps_theme',
+				'section'	=>'seedwps_managers_index',
+				'args'		=> array(
+					'label_for' => 'css_manager',
+					'class'		=> 'ui-toggle'
+				)
+			),
+			/**
+			 * Login Manager Array
+			 */
+			array(
+				'id'	=> 'login_manager',
+				'title'	=>'Activate Ajax login/Signup Manager',
+				'callback'	=> array($this->admin_manager_callbacks,'checkboxField'),
+				'page'		=>'seedwps_theme',
+				'section'	=>'seedwps_managers_index',
+				'args'		=> array(
+					'label_for' => 'login_manager',
 					'class'		=> 'ui-toggle'
 				)
 			)
