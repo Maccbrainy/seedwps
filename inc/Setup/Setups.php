@@ -12,6 +12,8 @@ class Setups
 	public function register()
 	{
 		add_action('after_setup_theme', array($this,'theme_Support_Setups'));
+
+        $this->theme_Post_Formats();
 	}
 
 	public function theme_Support_Setups()
@@ -24,7 +26,7 @@ class Setups
 
 		/*Add default posts and comments RSS feed links to head*/
 		
-		add_theme_support('automaatic-feed-links');
+		add_theme_support('automatic-feed-links');
 
 		 /**
         * Add woocommerce support and woocommerce override
@@ -46,20 +48,26 @@ class Setups
             'default-image' => '',
         ) ) );
 
-        add_theme_support( 'post-formats', array( 
-            'aside',
-            'gallery',
-            'link',
-            'image',
-            'quote',
-            'status',
-            'video',
-            'audio',
-            'chat',
-        ) );
-
         add_theme_support('custom-header');
         
-
 	}
+
+    /**
+     * Theme post format options 
+     * @return
+     */
+    public function theme_Post_Formats()
+    {
+        $options = get_option('post_formats');
+        $formats = array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat');
+        $output = array();
+
+        foreach ($formats as $format) {
+            $output[] = (@$options[$format] == 1 ? $format : '');
+            }
+
+        if (!empty($options)) {
+        add_theme_support('post-formats', $output);
+            }
+    }
 }
