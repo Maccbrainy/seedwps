@@ -23,7 +23,8 @@ final class Init
 			Setup\Setups::class,
 			Setup\Enqueue::class,
 			Core\Sidebar::class,
-			Api\Customizer::class
+			Api\Customizer::class,
+			Custom\Admin::class
 		];
 	}
 
