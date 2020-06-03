@@ -162,7 +162,7 @@ class Admin_Settings
 		}
 		// add settings fields
 		foreach ($this->set_fields as $field) {
-			add_settings_field($field['id'], $field['title'],  (isset($field['callback']) ? $field['callback'] : ''),  $field['page'], $field['section'], (isset($field['arg']) ? $field['arg']:''));
+			add_settings_field($field['id'], $field['title'],  (isset($field['callback']) ? $field['callback'] : ''),  $field['page'], $field['section'], (isset($field['args']) ? $field['args']:''));
 		}
 	}
 }
