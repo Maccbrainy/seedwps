@@ -31,6 +31,7 @@
 		</div>
 		<div id="tab-3" class="tab-pane">
 			<h3>About</h3>
+			<p> Everything you need to know about this theme is on</p><a target="__blank" href="https://github.com/Maccbrainy/seedwps">Github</a>
 		</div>
 	</div>	
 </div>
