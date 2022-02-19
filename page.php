@@ -23,7 +23,7 @@ get_header(); ?>
 						while ( have_posts() ):
 							the_post();
 
-							get_template_part('views/content', 'page' );
+							get_template_part('views/content-pages/content', 'page' );
 
 
 							//if comments are open or we have at least one comment, load up the comment template.

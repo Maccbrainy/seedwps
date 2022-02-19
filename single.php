@@ -20,7 +20,7 @@ get_header(); ?>
 						while ( have_posts() ):
 							the_post();
 
-							get_template_part('views/content', get_post_format() );
+							get_template_part('views/content-pages/content', get_post_format() );
 
 							the_post_navigation();
 

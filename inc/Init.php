@@ -24,12 +24,14 @@ final class Init
 			Setup\Enqueue::class,
 			Core\Sidebar::class,
 			Api\Customizer::class,
-			Custom\Admin::class
+			Custom\Dashboard::class,
+			Custom\Profile::class,
+			Custom\CustomCss::class
 		];
 	}
 
 	/**
-	 * Loop through the classes, initialize them, and call the register() method if it exits
+	 * Loop through the classes, initialize them, and call the register() method if it exists
 	 * @return
 	 */
 

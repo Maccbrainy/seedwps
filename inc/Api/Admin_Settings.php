@@ -5,7 +5,7 @@
  */
 namespace seedwps\Api;
 
-class Admin_Settings 
+class Admin_Settings
 {
 	/**
 	 * Admin pages array
@@ -40,7 +40,7 @@ class Admin_Settings
 
 	public function register()
 	{
-		if(!empty($this->admin_pages)){
+		if(!empty($this->admin_pages) || !empty($this->admin_subpages)){
 			add_action('admin_menu', array($this,'addAdminMenu'));
 		}
 
@@ -156,11 +156,11 @@ class Admin_Settings
 		foreach ($this->set_settings as $setting) {
 			register_setting($setting['option_group'], $setting['option_name'],  (isset($setting['sanitize_callback']) ? $setting['sanitize_callback']:''));
 		}
-		// add settings sections
+		// add settings section
 		foreach ($this->set_sections as $section) {
 			add_settings_section($section['id'], $section['title'],  (isset($section['callback']) ? $section['callback'] :''),  $section['page']);
 		}
-		// add settings fields
+		// add settings field
 		foreach ($this->set_fields as $field) {
 			add_settings_field($field['id'], $field['title'],  (isset($field['callback']) ? $field['callback'] : ''),  $field['page'], $field['section'], (isset($field['args']) ? $field['args']:''));
 		}

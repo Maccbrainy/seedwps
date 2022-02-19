@@ -37,8 +37,10 @@
 			?>
 
 			<div class="container container-fluid">
+
 				<div class="row">
 					<div class="col-xs-12 col-sm-4">
+						
 						<div class="site-branding">
 							<h1 class="site-title">
 									<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
@@ -74,6 +76,7 @@
 			</div><!-- .container -->
 		</header><!-- .masthead -->
 		<div id="content" class="site-content">
+
 
 		
 	

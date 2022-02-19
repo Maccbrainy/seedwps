@@ -34,4 +34,5 @@ class Admin_Manager_Callbacks
 
 		echo '<input type="checkbox" name="'.$name.'" value="1" class="'.$classes.'" '.($checkbox ? 'checked' : '').'>';
 	}
+
 }

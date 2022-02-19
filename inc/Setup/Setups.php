@@ -58,7 +58,7 @@ class Setups
      */
     public function theme_Post_Formats()
     {
-        $options = get_option('post_formats');
+        $options = get_option('seedwps_theme_options');
         $formats = array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat');
         $output = array();
 

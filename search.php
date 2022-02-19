@@ -36,14 +36,14 @@ get_header(); ?>
 							while (have_posts()) :
 								the_post();
 
-								get_template_part('views/content','search');
+								get_template_part('views/content-pages/content','search');
 							endwhile;
 
 							the_posts_navigation();
 
 						else:
 
-							get_template_part('views/content','none');
+							get_template_part('views/content-pages/content','none');
 
 						endif;
 
