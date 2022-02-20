@@ -58,16 +58,18 @@ class Setups
      */
     public function theme_Post_Formats()
     {
+        
         $options = get_option('seedwps_theme_options');
         $formats = array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat');
         $output = array();
 
         foreach ($formats as $format) {
-            $output[] = (@$options[$format] == 1 ? $format : '');
+            if (!empty($options)) {
+                $output[] = (isset($options[$format]) == 1 ? $format : '');
+                add_theme_support('post-formats', $output);
             }
+        }
 
-        if (!empty($options)) {
-        add_theme_support('post-formats', $output);
-            }
+        return $this;
     }
 }

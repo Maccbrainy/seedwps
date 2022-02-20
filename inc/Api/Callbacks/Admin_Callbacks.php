@@ -58,13 +58,11 @@ class Admin_Callbacks
 	//Theme options support setting field callback
 	public function post_Formats_Index()
 	{
-
-
 		$options = get_option('seedwps_theme_options');
 		$formats = array('aside','gallery','link','image','quote','status','video','audio','chat');
 		$output= '';
 		foreach ($formats as $format) {
-			$checked = ( @$options[$format]==1 ? 'checked':'' );
+			$checked = ( empty($options[$format]) ? '': 'checked' );
 			$output.='<input type="checkbox" id="'.$format.'" name="seedwps_theme_options['.$format.']" value="1" '.$checked.'>'.$format.'</label><br>';
 		}
 		echo $output;
